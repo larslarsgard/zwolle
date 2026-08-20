@@ -1,118 +1,231 @@
+/* ==========================================================================
+   1. VARIABLES & THEME
+   ========================================================================== */
 :root {
-    --bg-color: #f7f5f0; /* Warm paper tone */
-    --text-color: #2c2c2c;
-    --accent-color: #8c3b2b;
+    --bg-desk: #e8e4db;          /* The "table" behind the notebook */
+    --bg-paper: #ffffff;         /* The page color */
+    --dot-grid: #e5e0d5;         /* Color of the notebook dots */
+    --text-main: #333333;
+    --ink-blue: #2b5c8c;         /* Pen color for links/notes */
+    --ink-red: #b33927;          /* Pen color for highlights */
+    --note-yellow: #fef68a;
+    --note-pink: #ffd1dc;
+    --border-soft: #e3dec9;
 }
 
+/* ==========================================================================
+   2. GLOBAL & TYPOGRAPHY
+   ========================================================================== */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Courier New', Courier, monospace; /* Or a clean sans/serif */
-    line-height: 1.6;
+    background-color: var(--bg-desk);
+    color: var(--text-main);
+    font-family: 'Georgia', serif; /* Serif feels more like a physical journal */
+    line-height: 1.7;
     margin: 0;
     padding: 2rem;
 }
 
-.notebook-spread {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 3rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+h1, h2, h3, h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 0;
 }
 
-/* CSS Grid for precise positioning */
-.content-grid {
+/* Monospace for dates, code, and small notes */
+.date, .post-date, .post-tag, .badge, .sticky-note, .caption {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ==========================================================================
+   3. THE NOTEBOOK PAGES (Layout)
+   ========================================================================== */
+.post-box {
+    position: relative; /* Allows absolute positioning of sketches inside */
+    background-color: var(--bg-paper);
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    padding: 3rem 4rem;
+    border-radius: 4px;
+    box-shadow: 
+        0 4px 15px rgba(0,0,0,0.05),
+        -1px 0 0 rgba(0,0,0,0.02) inset; /* Subtle page edge */
+    
+    /* Bullet Journal Dot Grid Effect */
+    background-image: radial-gradient(var(--dot-grid) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+}
+
+header.journal-header, header.post-meta {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-main);
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.9rem;
+    color: var(--ink-blue);
+}
+
+/* ==========================================================================
+   4. CONTENT GRID (Flexible Placement)
+   ========================================================================== */
+.content-grid, .post-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.text-block {
-    grid-column: span 7; /* Takes up 7 of 12 columns */
-}
+/* Default span rules */
+.text-block, .post-text { grid-column: span 7; }
+.media-block, .post-media { grid-column: span 5; margin: 0; }
+.side-note { grid-column: span 5; margin: 0; }
 
-.media-block {
-    grid-column: span 5; /* Takes up 5 of 12 columns */
-}
+/* Let media span fully if needed */
+.feature-img { grid-column: span 12; }
 
-.media-block img {
+/* Images look like taped/pasted photos */
+figure img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    display: block;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.caption {
+figcaption.caption {
     font-size: 0.85rem;
-    color: #666;
-    margin-top: 0.5rem;
-    display: block;
+    color: var(--ink-blue);
+    margin-top: 0.8rem;
+    font-style: italic;
 }
 
-.side-note {
-    grid-column: span 4;
-    background: #fdfbf7;
-    border-left: 3px solid var(--accent-color);
-    padding: 1rem;
+/* ==========================================================================
+   5. ANNOTATIONS, NOTES & SKETCHES
+   ========================================================================== */
+/* Side annotations tied to the grid */
+aside.side-note {
+    background: rgba(253, 251, 247, 0.85);
+    border-left: 3px solid var(--ink-red);
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
 }
 
-.sticky-note {
-    background: #fef68a;
-    color: #333;
-    padding: 1.2rem;
+/* Post-it Notes */
+aside.sticky-note {
+    color: #222;
+    padding: 1.5rem;
     width: 250px;
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
-    transform: rotate(1deg); /* Slight organic tilt */
-    font-family: 'Courier New', monospace;
-    margin: 1.5rem 0;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+    font-size: 0.9rem;
+    margin: 2rem 0;
+    
+    /* Post-it Note curl effect */
+    border-bottom-right-radius: 20px 5px;
 }
-.sticky-note.yellow { background: #fef68a; }
-.sticky-note.pink { background: #ffd1dc; transform: rotate(-1deg); }
-
-.margin-trigger {
-    position: relative;
-    color: var(--accent-color);
-    cursor: pointer;
-    font-weight: bold;
+.sticky-note.yellow { 
+    background: var(--note-yellow); 
+    transform: rotate(2deg); 
+}
+.sticky-note.pink { 
+    background: var(--note-pink); 
+    transform: rotate(-1.5deg); 
 }
 
-/* Hidden by default, appears on hover/focus */
-.margin-popup {
-    display: none;
+/* Add this class to HTML elements to place sketches "wherever you like" */
+.free-sketch {
     position: absolute;
-    left: 105%;
-    top: 0;
-    width: 200px;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     z-index: 10;
+    opacity: 0.8;
+    mix-blend-mode: multiply; /* Makes white backgrounds on sketches disappear into the page */
 }
 
-.margin-trigger:hover .margin-popup,
-.margin-trigger:focus .margin-popup {
-    display: block;
+/* ==========================================================================
+   6. INTERACTIVE ELEMENTS (Popups & Links)
+   ========================================================================== */
+/* Reset button styles for the margin popup trigger */
+button.margin-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--ink-red);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline wavy var(--ink-red) 1px;
+    text-underline-offset: 3px;
+    position: relative;
 }
 
+/* The Popup Note */
+.margin-popup {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 150%;
+    transform: translateX(-50%);
+    width: 220px;
+    background: #222;
+    color: #fff;
+    border-radius: 4px;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+    font-weight: normal;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: opacity 0.2s ease, bottom 0.2s ease;
+    z-index: 20;
+}
+
+/* Arrow for the popup */
+.margin-popup::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+
+button.margin-trigger:hover .margin-popup,
+button.margin-trigger:focus .margin-popup {
+    visibility: visible;
+    opacity: 1;
+    bottom: 120%; /* Slight slide-up animation effect */
+}
+
+/* ==========================================================================
+   7. ATTACHMENTS & INDEX (UI Components)
+   ========================================================================== */
 .micro-card {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    background: #fdfbf7;
-    border: 1px solid #e3dec9;
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1rem 0;
+    gap: 1.2rem;
+    background: #fff;
+    border: 2px dashed var(--border-soft);
+    padding: 1.2rem;
+    border-radius: 6px;
+    margin: 2rem 0;
+    transition: transform 0.2s ease;
+}
+.micro-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--ink-blue);
 }
 .card-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 .micro-card h4 {
-    margin: 0 0 0.2rem 0;
-    font-size: 0.95rem;
+    margin: 0 0 0.3rem 0;
 }
 .micro-card p {
     margin: 0 0 0.5rem 0;
@@ -121,24 +234,22 @@ body {
 }
 .micro-card a {
     font-size: 0.85rem;
-    color: var(--accent-color);
+    color: var(--ink-blue);
+    font-weight: bold;
     text-decoration: none;
 }
-.micro-card a:hover {
-    text-decoration: underline;
-}
 
+/* Index / Table of Contents */
 .archive-nav {
-    background: #f4f1ea;
-    padding: 1.5rem;
-    border-radius: 4px;
-    margin-bottom: 3rem;
+    background: var(--bg-paper);
+    padding: 2rem;
 }
 .archive-nav h3 {
-    margin-top: 0;
-    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 1rem;
 }
 .archive-nav ul {
     list-style: none;
@@ -147,35 +258,33 @@ body {
 }
 .archive-nav li {
     display: flex;
+    align-items: baseline;
     gap: 1rem;
-    padding: 0.4rem 0;
-    border-bottom: 1px dashed #ddd;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+.archive-nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    flex-grow: 1;
+}
+.archive-nav a:hover {
+    color: var(--ink-blue);
 }
 .archive-nav .date {
-    color: #777;
-    font-family: monospace;
+    color: var(--ink-red);
+    font-size: 0.9rem;
 }
 .badge {
     font-size: 0.7rem;
-    background: #e2d9c5;
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-    height: fit-content;
+    background: #eee;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    text-transform: uppercase;
 }
 
-/* Sets the background color for the space OUTSIDE the boxes */
-body {
-    background-color: #f0ede6; /* A soft, notebook-gray background */
-    padding: 2rem;
-    font-family: 'Courier New', Courier, monospace; 
-}
-
-/* This class turns any element into a separate white box */
-.post-box {
-    background-color: #ffffff;
-    max-width: 900px;
-    margin: 0 auto 3rem auto; /* Centers the box and adds 3rem of space below it */
-    padding: 3rem;
-    border-radius: 8px; /* Optional: slightly rounds the corners */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Gives it a slight floating shadow */
+/* GIF wrapper styling */
+figure.gif-wrapper {
+    margin: 2rem 0;
+    text-align: center;
 }
