@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Journal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="notebook-spread">
+        <header class="journal-header">
+            <h1>Field Notes: Week 1</h1>
+            <p class="date">August 2026</p>
+        </header>
+
+        <!-- Custom grid layout for absolute placement freedom -->
+        <section class="content-grid">
+            <div class="text-block">
+                <p>Arrived at the studio today. The workshop space has an incredible setup for timber work and rapid prototyping...</p>
+            </div>
+            
+            <div class="media-block feature-img">
+                <img src="assets/images/workshop.jpg" alt="Workshop setup">
+                <span class="caption">Initial impressions of the machinery layout.</span>
+            </div>
+
+            <div class="text-block side-note">
+                <p>💡 <em>Observation:</em> The local approach to modular joinery differs quite a bit from what I'm used to back home.</p>
+            </div>
+
+            <div class="media-block">
+                <img src="assets/gifs/process.gif" alt="Milling process GIF">
+            </div>
+        </section>
+    </main>
+  
+<br>
+  
+        <!-- Artikkel -->
+<article class="journal-post" id="post-2026-09-12">
+    <div class="post-meta">
+        <span class="post-date">Sept 12, 2026</span>
+        <span class="post-tag">Workshop / Prototyping</span>
+    </div>
+
+    <h2>First Iteration of the Joint Assembly</h2>
+
+    <div class="post-grid">
+        <!-- Main text body -->
+        <div class="post-text">
+            <p>Spent the morning testing tolerances on the CNC router. The grain structure of the local stock behaved much differently than anticipated...</p>
+            <p>We adjusted the feed rate and managed to clean up the edges significantly by the second pass.</p>
+        </div>
+
+        <!-- Inline media element -->
+        <div class="post-media">
+            <img src="assets/images/joint-test.jpg" alt="Wood joint test piece">
+            <span class="caption">Milled sample showing grain tear-out before adjustment.</span>
+        </div>
+    </div>
+</article>
+  
+<br>
+  
+        <!-- The Sticky Note -->
+  <div class="sticky-note yellow">
+    <p>📌 <strong>To do:</strong> Check timber availability at the local lumber yard before Thursday.</p>
+</div>
+
+<br>
+  
+        <!-- Margin / Sidebar Popups -->
+<p>We finalized the material specifications for the frame <span class="margin-trigger" tabindex="0">[*]
+    <span class="margin-popup">Referenced standard EN-1995 for timber load capacities.</span>
+</span> and moved straight into digital rendering.</p>
+  
+<br>
+  
+        <!-- Micro-Notes & Document Links -->
+<div class="micro-card">
+    <div class="card-icon">📄</div>
+    <div class="card-content">
+        <h4>Full Ergonomics Research Document</h4>
+        <p>Complete breakdown of user interviews and anthropometric data.</p>
+        <a href="assets/docs/ergonomics.pdf" target="_blank">Download PDF (4.2 MB) &rarr;</a>
+    </div>
+</div>
+  
+<br>
+
+          <!-- Basic Site Structure -->
+
+<nav class="archive-nav">
+    <h3>Index of Entries</h3>
+    <ul>
+        <li><span class="date">Aug 28</span> <a href="#arrival">Arrival & Studio Setup</a></li>
+        <li><span class="date">Sept 04</span> <a href="#workshop">First CNC Milling Tests</a> <span class="badge">GIF</span></li>
+        <li><span class="date">Sept 12</span> <a href="#post-2026-09-12">Joint Assembly Iterations</a></li>
+    </ul>
+</nav>
+  
+  <br>
+
+            <!-- GIF -->
+  <figure class="gif-wrapper">
+    <img src="assets/gifs/rotation.gif" alt="360 view of model">
+    <figcaption>Rapid turntable test (GIF, loop)</figcaption>
+</figure>
+
+  <br>
+  
+</body>
+</html>
