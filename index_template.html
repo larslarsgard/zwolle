@@ -9,12 +9,12 @@
 <body>
 
     <!-- NAV: Top Index Box -->
-    <nav class="post-box archive-nav">
+    <nav class="post-box archive-nav" aria-label="Index of Entries">
         <h3>Index of Entries</h3>
         <ul>
-            <li><span class="date">Aug 28</span> <a href="#arrival">Arrival & Studio Setup</a></li>
-            <li><span class="date">Sept 04</span> <a href="#workshop">First CNC Milling Tests</a> <span class="badge">GIF</span></li>
-            <li><span class="date">Sept 12</span> <a href="#post-2026-09-12">Joint Assembly Iterations</a></li>
+            <li><time datetime="2026-08-28" class="date">Aug 28</time> <a href="#arrival">Arrival & Studio Setup</a></li>
+            <li><time datetime="2026-09-04" class="date">Sept 04</time> <a href="#workshop">First CNC Milling Tests</a> <span class="badge">GIF</span></li>
+            <li><time datetime="2026-09-12" class="date">Sept 12</time> <a href="#post-2026-09-12">Joint Assembly Iterations</a></li>
         </ul>
     </nav>
 
@@ -22,7 +22,7 @@
     <article class="post-box notebook-spread" id="arrival">
         <header class="journal-header">
             <h1>Field Notes: Week 1</h1>
-            <p class="date">August 2026</p>
+            <time datetime="2026-08-28" class="date">August 28, 2026</time>
         </header>
 
         <section class="content-grid">
@@ -30,27 +30,39 @@
                 <p>Arrived at the studio today. The workshop space has an incredible setup for timber work and rapid prototyping...</p>
             </div>
             
-            <div class="media-block feature-img">
-                <img src="assets/images/workshop.jpg" alt="Workshop setup">
-                <span class="caption">Initial impressions of the machinery layout.</span>
-            </div>
+            <!-- Converted image block to semantic figure -->
+            <figure class="media-block feature-img">
+                <img src="assets/images/workshop.jpg" alt="Photograph of the studio workshop showing machinery layout">
+                <figcaption class="caption">Initial impressions of the machinery layout.</figcaption>
+            </figure>
 
-            <div class="text-block side-note">
+            <!-- Converted side-note to an aside -->
+            <aside class="text-block side-note">
                 <p>💡 <em>Observation:</em> The local approach to modular joinery differs quite a bit from what I'm used to back home.</p>
-            </div>
-
-            <div class="media-block">
-                <img src="assets/gifs/process.gif" alt="Milling process GIF">
-            </div>
+            </aside>
         </section>
     </article>
   
-    <!-- POST 2: Sept 12 Update -->
-    <article class="post-box journal-post" id="post-2026-09-12">
-        <div class="post-meta">
-            <span class="post-date">Sept 12, 2026</span>
+    <!-- POST 2: Sept 04 Update (Added to fix the broken anchor link) -->
+    <article class="post-box journal-post" id="workshop">
+        <header class="post-meta">
+            <time datetime="2026-09-04" class="post-date">Sept 04, 2026</time>
             <span class="post-tag">Workshop / Prototyping</span>
-        </div>
+        </header>
+        <h2>First CNC Milling Tests</h2>
+        
+        <figure class="media-block">
+            <img src="assets/gifs/process.gif" alt="Animated GIF showing the CNC milling process in real-time">
+            <figcaption>Testing the feed rate on the new CNC machine.</figcaption>
+        </figure>
+    </article>
+
+    <!-- POST 3: Sept 12 Update -->
+    <article class="post-box journal-post" id="post-2026-09-12">
+        <header class="post-meta">
+            <time datetime="2026-09-12" class="post-date">Sept 12, 2026</time>
+            <span class="post-tag">Workshop / Prototyping</span>
+        </header>
 
         <h2>First Iteration of the Joint Assembly</h2>
 
@@ -59,36 +71,39 @@
                 <p>Spent the morning testing tolerances on the CNC router. The grain structure of the local stock behaved much differently than anticipated...</p>
                 <p>We adjusted the feed rate and managed to clean up the edges significantly by the second pass.</p>
                 
-                <!-- Margin popup integrated into the text -->
-                <p>We finalized the material specifications for the frame <span class="margin-trigger" tabindex="0">[*]
-                    <span class="margin-popup">Referenced standard EN-1995 for timber load capacities.</span>
-                </span> and moved straight into digital rendering.</p>
+                <!-- Margin popup integrated into the text, changed to button for accessibility -->
+                <p>We finalized the material specifications for the frame 
+                    <button class="margin-trigger" aria-label="Reference Note">[*]
+                        <span class="margin-popup">Referenced standard EN-1995 for timber load capacities.</span>
+                    </button> 
+                and moved straight into digital rendering.</p>
             </div>
 
-            <div class="post-media">
-                <img src="assets/images/joint-test.jpg" alt="Wood joint test piece">
-                <span class="caption">Milled sample showing grain tear-out before adjustment.</span>
-            </div>
+            <figure class="post-media">
+                <img src="assets/images/joint-test.jpg" alt="Close-up of milled wood joint sample showing grain tear-out">
+                <figcaption class="caption">Milled sample showing grain tear-out before adjustment.</figcaption>
+            </figure>
         </div>
         
-        <!-- Sticky Note placed at the bottom of the post -->
-        <div class="sticky-note yellow">
+        <!-- Sticky Note changed to aside -->
+        <aside class="sticky-note yellow">
             <p>📌 <strong>To do:</strong> Check timber availability at the local lumber yard before Thursday.</p>
-        </div>
+        </aside>
         
         <!-- Document Link -->
         <div class="micro-card">
-            <div class="card-icon">📄</div>
+            <div class="card-icon" aria-hidden="true">📄</div>
             <div class="card-content">
                 <h4>Full Ergonomics Research Document</h4>
                 <p>Complete breakdown of user interviews and anthropometric data.</p>
-                <a href="assets/docs/ergonomics.pdf" target="_blank">Download PDF (4.2 MB) &rarr;</a>
+                <!-- Added rel attributes for security when opening new tabs -->
+                <a href="assets/docs/ergonomics.pdf" target="_blank" rel="noopener noreferrer">Download PDF (4.2 MB) &rarr;</a>
             </div>
         </div>
         
         <!-- GIF Wrapper -->
         <figure class="gif-wrapper">
-            <img src="assets/gifs/rotation.gif" alt="360 view of model">
+            <img src="assets/gifs/rotation.gif" alt="360 degree 3D rotation view of the timber model">
             <figcaption>Rapid turntable test (GIF, loop)</figcaption>
         </figure>
     </article>
