@@ -56,3 +56,109 @@ body {
     border-left: 3px solid var(--accent-color);
     padding: 1rem;
 }
+
+.sticky-note {
+    background: #fef68a;
+    color: #333;
+    padding: 1.2rem;
+    width: 250px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
+    transform: rotate(1deg); /* Slight organic tilt */
+    font-family: 'Courier New', monospace;
+    margin: 1.5rem 0;
+}
+.sticky-note.yellow { background: #fef68a; }
+.sticky-note.pink { background: #ffd1dc; transform: rotate(-1deg); }
+
+.margin-trigger {
+    position: relative;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Hidden by default, appears on hover/focus */
+.margin-popup {
+    display: none;
+    position: absolute;
+    left: 105%;
+    top: 0;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.margin-trigger:hover .margin-popup,
+.margin-trigger:focus .margin-popup {
+    display: block;
+}
+
+.micro-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fdfbf7;
+    border: 1px solid #e3dec9;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+.card-icon {
+    font-size: 1.5rem;
+}
+.micro-card h4 {
+    margin: 0 0 0.2rem 0;
+    font-size: 0.95rem;
+}
+.micro-card p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+.micro-card a {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.micro-card a:hover {
+    text-decoration: underline;
+}
+
+.archive-nav {
+    background: #f4f1ea;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 3rem;
+}
+.archive-nav h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.archive-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.archive-nav li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed #ddd;
+}
+.archive-nav .date {
+    color: #777;
+    font-family: monospace;
+}
+.badge {
+    font-size: 0.7rem;
+    background: #e2d9c5;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    height: fit-content;
+}
