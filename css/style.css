@@ -1,0 +1,58 @@
+:root {
+    --bg-color: #f7f5f0; /* Warm paper tone */
+    --text-color: #2c2c2c;
+    --accent-color: #8c3b2b;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace; /* Or a clean sans/serif */
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+}
+
+.notebook-spread {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* CSS Grid for precise positioning */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.text-block {
+    grid-column: span 7; /* Takes up 7 of 12 columns */
+}
+
+.media-block {
+    grid-column: span 5; /* Takes up 5 of 12 columns */
+}
+
+.media-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.caption {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.side-note {
+    grid-column: span 4;
+    background: #fdfbf7;
+    border-left: 3px solid var(--accent-color);
+    padding: 1rem;
+}
