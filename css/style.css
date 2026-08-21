@@ -673,3 +673,52 @@ aside.sms-widget {
     99%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
     100%     { content: "Gardermoen"; opacity: 1; filter: blur(0); }
 }
+
+
+
+/* ==========================================================================
+   MOBILE RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Reduce large desktop paddings to save screen space */
+    body {
+        padding: 1rem;
+    }
+    
+    .post-box {
+        padding: 1.5rem; 
+    }
+
+    /* 2. Stack headers so dates don't overlap titles on narrow screens */
+    header.journal-header, .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* 3. Force all grid elements to span the full width (1 column) */
+    .text-block, .post-text, .media-block, .post-media,
+    .side-note, .tall-media, .inline-nav, 
+    aside.timeline-widget, aside.sms-widget {
+        grid-column: 1 / -1; 
+        grid-row: auto; 
+    }
+
+    /* 4. Fix the media collage so images stack vertically */
+    .media-collage {
+        grid-template-columns: 1fr; 
+    }
+    
+    .media-collage .main-gif, 
+    .media-collage .side-pic {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        height: auto;
+    }
+
+    /* 5. Allow the fixed-width sticky notes to shrink */
+    aside.sticky-note {
+        width: auto; 
+        margin: 1.5rem 0;
+    }
+}
