@@ -722,3 +722,241 @@ aside.sms-widget {
         margin: 1.5rem 0;
     }
 }
+
+/* ==========================================================================
+   18. ANIMATED INK DRAGONFLY
+   ========================================================================== */
+/* The box that acts as the dragonfly's territory */
+.dragonfly-box {
+    position: relative; 
+}
+
+/* The Dragonfly Body */
+.dragonfly {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: var(--ink-blue); /* Drawn with your blue pen */
+    border-radius: 2px;
+    z-index: 10;
+    pointer-events: none; /* Ensures it doesn't block you from highlighting text */
+    
+    /* Takes 18 seconds to complete one full lap around the box */
+    animation: flightPath 18s linear infinite; 
+}
+
+/* The 4 Wings (Top pair and bottom pair) */
+.dragonfly::before,
+.dragonfly::after {
+    content: '';
+    position: absolute;
+    left: -8px; /* Centers the 18px wide wings over the 2px body */
+    width: 18px;
+    height: 5px;
+    background-color: rgba(43, 92, 140, 0.1); /* Smudged, transparent ink */
+    border: 1px solid var(--ink-blue);
+    border-radius: 50%;
+}
+
+/* Top wings */
+.dragonfly::before {
+    top: 3px;
+    animation: flutter 0.05s infinite alternate; /* Incredibly fast flapping */
+}
+
+/* Bottom wings */
+.dragonfly::after {
+    top: 9px;
+    animation: flutter 0.05s infinite alternate-reverse; /* Flaps opposite to top wings */
+}
+
+/* The Flapping Illusion */
+@keyframes flutter {
+    /* Scaling horizontally creates a 2D illusion of wings going up and down */
+    0%   { transform: scaleX(1); }
+    100% { transform: scaleX(0.2); }
+}
+
+/* The Flight Path (Patrolling the edges of the box) */
+@keyframes flightPath {
+    /* TOP EDGE (Flying Right) */
+    0%   { top: -15px; left: -15px; transform: rotate(90deg); }
+    22%  { top: -15px; left: 100%;  transform: rotate(90deg); }
+    25%  { top: -15px; left: 100%;  transform: rotate(180deg); } /* Pause to turn Down */
+
+    /* RIGHT EDGE (Flying Down) */
+    47%  { top: 100%;  left: 100%;  transform: rotate(180deg); }
+    50%  { top: 100%;  left: 100%;  transform: rotate(270deg); } /* Pause to turn Left */
+
+    /* BOTTOM EDGE (Flying Left) */
+    72%  { top: 100%;  left: -15px; transform: rotate(270deg); }
+    75%  { top: 100%;  left: -15px; transform: rotate(360deg); } /* Pause to turn Up */
+
+    /* LEFT EDGE (Flying Up) */
+    97%  { top: -15px; left: -15px; transform: rotate(360deg); }
+    100% { top: -15px; left: -15px; transform: rotate(450deg); } /* Turn Right (Seamlessly loops to 90deg) */
+}
+
+/* ==========================================================================
+   19. ALBERT HEIJN SIGN
+   ========================================================================== */
+.ah-sign {
+    background-color: #00a0e2; /* Classic Albert Heijn Blue */
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 0.15em 0.6em;
+    border-radius: 12px; /* Gives it that friendly, pill-shaped supermarket look */
+    margin: 0 0.1em;
+    vertical-align: baseline;
+    letter-spacing: 0.02em;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+
+
+/* ==========================================================================
+   20. SLEEPY / NODDING OFF TEXT
+   ========================================================================== */
+/* ==========================================================================
+   20. SLEEPY / NODDING OFF TEXT
+   ========================================================================== */
+.sleepy-text {
+    display: inline-block; 
+    color: #333333; /* Starts out looking like normal text */
+    transform-origin: bottom left; 
+    animation: nodOff 8s infinite; 
+}
+
+/* The timeline: Awake (dark) -> Droop, Blur & Turn Blue -> Snap Awake (dark) */
+@keyframes nodOff {
+    /* 0% to 60%: Totally awake, sharp, and normal color */
+    0%, 60% { 
+        transform: rotate(0deg) translateY(0); 
+        filter: blur(0); 
+        opacity: 1;
+        color: #333333;
+    }
+    
+    /* 80%: Slowly drooping, fading, getting cloudy, and changing to dreamy blue */
+    80% { 
+        transform: rotate(-4deg) translateY(3px); 
+        filter: blur(1.5px); 
+        opacity: 0.7;
+        color: #6a7b8c; 
+    }
+    
+    /* 85%: The "snap awake" jerk upward, instantly back to normal color */
+    85% { 
+        transform: rotate(1deg) translateY(-1px); 
+        filter: blur(0); 
+        opacity: 1;
+        color: #333333;
+    }
+    
+    /* 90% to 100%: Settle back to normal awake state */
+    90%, 100% { 
+        transform: rotate(0deg) translateY(0); 
+        filter: blur(0); 
+        opacity: 1;
+        color: #333333;
+    }
+}
+
+
+/* ==========================================================================
+   21. END OF DAY POSTCARD WIDGET
+   ========================================================================== */
+.postcard-widget {
+    grid-column: 1 / -1; /* Spans all 12 columns (full width of the grid) */
+    position: relative;
+    background: #fcfbf8; /* A very warm, slightly aged white paper color */
+    padding: 1.5rem 1.5rem 2.5rem 1.5rem; /* Thicker padding on the bottom */
+    margin: 3rem 0 1rem 0;
+    
+    /* Creates the physical photo card look */
+    border: 1px solid #eae5d9;
+    border-radius: 2px;
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.06), 
+        0 2px 4px rgba(0,0,0,0.04);
+        
+    /* A very slight organic tilt */
+    transform: rotate(1deg); 
+}
+
+/* 🧲 The Magnet */
+.postcard-widget .magnet {
+    position: absolute;
+    top: -12px; /* Pulls it up so it overlaps the top edge of the photo */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it perfectly */
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    
+    /* Creates a realistic, shiny 3D metallic dark gray surface */
+    background: radial-gradient(circle at 30% 30%, #7a7a7a, #222222);
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.3), /* Drop shadow on the paper */
+        inset 0 -2px 4px rgba(0,0,0,0.5); /* Inner shadow for 3D volume */
+    z-index: 10;
+}
+
+/* 🖼️ The Auto-Cropping Image */
+.postcard-photo {
+    width: 100%;
+    aspect-ratio: 3 / 2; /* Forces a classic 6x4 physical photo shape */
+    object-fit: cover; /* Zooms/crops the image to fill the shape without squishing! */
+    border-radius: 2px;
+    
+    /* A tiny inner shadow to make it look printed onto the card */
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); 
+    display: block;
+}
+
+/* ✍️ The Text Area */
+.postcard-caption {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.postcard-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.4rem;
+    margin: 0 0 0.2rem 0;
+    color: var(--ink-blue); /* Uses your pen color */
+}
+
+.postcard-desc {
+    font-family: 'Courier New', Courier, monospace; /* Typewriter font for the note */
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+}
+
+/* ==========================================================================
+   22. POSTCARD SIZE MODIFIERS
+   ========================================================================== */
+
+/* 1. Makes the whole postcard narrower and centers it on the page */
+.postcard-widget.is-narrow {
+    grid-column: 3 / 11; /* Takes up 8 middle columns instead of all 12 */
+}
+
+/* 2. Makes the whole postcard very small (perfect for side-notes) */
+.postcard-widget.is-small {
+    grid-column: 4 / 10; /* Takes up 6 middle columns */
+    padding: 1rem 1rem 1.5rem 1rem;
+}
+
+/* 3. Changes the photo crop to a perfect Square (like a Polaroid) */
+.postcard-photo.is-square {
+    aspect-ratio: 1 / 1;
+}
+
+/* 4. Changes the photo crop to a Vertical Portrait */
+.postcard-photo.is-portrait {
+    aspect-ratio: 4 / 5;
+}
