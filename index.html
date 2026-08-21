@@ -7,55 +7,148 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <!-- NAV: Top Index Box -->
-    <nav class="post-box archive-nav" aria-label="Index of Entries">
-        <h3>Dagane:</h3>
-        <ul>
-            <li><time datetime="2026-08-28" class="date">Aug 28</time> <a href="#arrival">Arrival & Studio Setup</a></li>
-            <li><time datetime="2026-09-04" class="date">Sept 04</time> <a href="#workshop">First CNC Milling Tests</a> <span class="badge">GIF</span></li>
-        </ul>
-    </nav>
-
-    <!-- POST 1: Week 1 Field Notes -->
-    <article class="post-box notebook-spread" id="arrival">
+<!-- POST 0: Introduksjon til bloggen -->
+    <article class="post-box notebook-spread" id="none">
         <header class="journal-header">
-            <h1>Om loggbokji</h1>
-            <time datetime="2026-08-01" class="date">August, 2026</time>
+            <h1>Lars & Zwolle-soga</h1>
+            <time datetime="2026-08-01" class="date">Haustsemester 2026</time>
         </header>
-
+        
+        <section class="content-grid">
+            <!-- RAD 1, LEFT: Tekst tek 7 kolonner -->
             <div class="text-block">
-                <p>E ska på utveksling te Nederland som fysste del tå siste året på Produktdesignstudiet v. OsloMet Kjeller.</p>
+			<h3>Loggbok frå utveksling i Nederland</h3>
+                <p>E ska på utveksling te Nederland og ønska ei dokumentering tå halvåret. Byen <a href="https://maps.app.goo.gl/RAxzL4VcYNFDrqJz8" target="_blank" rel="noopener noreferrer">Zwolle i Overijsselse</a> e destinasjonen, med designstudier ved Windesheim Hogeschool på planen.</p>
+                <p>Her vil e loggføre som det høve seg, så ei adressering tå eventuelle lesare bi slik det fell naturlegt, eller ikkji eksisterande:)</p>
             </div>
             
-            <!-- Converted image block to semantic figure -->
-            <figure class="media-block feature-img">
-                <img src="assets/images/workshop.jpg" alt="Photograph of the studio workshop showing machinery layout">
-                <figcaption class="caption">Initial impressions of the machinery layout.</figcaption>
+            <!-- RAD 1 & 2, RIGHT: Bilde på 5 kolonner OG 2 rader for tekst og nav -->
+            <figure class="media-block tall-media">
+                <img src="assets/images/profil.jpg" alt="Meg i Amsterdam tidlegare i summar. Bilete tatt tå Ingrid &lt;3">
+                <figcaption class="caption">Amsterdam tidlegare i sumar med Ingrid &lt;3</figcaption>
             </figure>
 
-            <!-- Converted side-note to an aside -->
-            <aside class="text-block side-note">
-                <p>💡 <em>Observation:</em> The local approach to modular joinery differs quite a bit from what I'm used to back home.</p>
-            </aside>
+            <!-- RAD 2, LEFT: Nav på 7 kolonner, under teksten -->
+            <nav class="archive-nav inline-nav" aria-label="Index of Entries">
+                <h3>Dagane som har rent:</h3>
+                <ul>
+                    <li><time datetime="2026-08-19" class="date">Aug 19</time> <a href="#dag0">Fly-, tog- og bussing på «tapp»</a></li>
+                    <li><time datetime="2026-08-20" class="date">Aug 20</time> <a href="#dag1">Skødde og regn - e e i Drammen?</a> <span class="badge">Vær	</span></li>
+                    <li><time datetime="2026-08-21" class="date">Aug 21</time> <a href="#dag3">Sykkel, gitar og trekkspellsakn!</a></li>
+                </ul>
+            </nav>
+            
         </section>
     </article>
   
-    <!-- POST 2: Sept 04 Update (Added to fix the broken anchor link) -->
-    <article class="post-box journal-post" id="workshop">
+<!-- POST 0: Fysste dag med reise -->
+
+    <article class="post-box journal-post" id="dag0">
         <header class="post-meta">
-            <time datetime="2026-09-04" class="post-date">Sept 04, 2026</time>
-            <span class="post-tag">Workshop / Prototyping</span>
+            <time datetime="2026-08-19" class="post-date">Aug 19, 2026</time>
+            <span class="post-tag">Dagslogg</span>
         </header>
-        <h2>First CNC Milling Tests</h2>
+
+        <h2>Fly-, tog- og bussing på «tapp»</h2>
+
+        <div class="post-grid">
+            <div class="post-text">
+                <p>Etter å ha leika kvardag i Oslo øve helji, slo vekkjeklukka me tebake te virkelegheiten <span class="digital-clock">04:30</span> onsdags mørgon. Ein vikusbillett på Ruter va sponsa tå Gommo, så ned te Oslo S og inn på <span class="train-display">RE12 Eidsvoll</span> bar det utta lovbrudd.</p>
+                <p>Opp og te <span class="word-cycle" aria-label="Modergarden, Gardermoen, Endre Garmo, Er Mona Gerd?"></span> kor sikkerhetskontrolløren tæsja Frusen min og Goffa kunne oppdatterte me på at flyet va i rute hjå Flightradar.</p>
+                <p>E søvna før take-off og vakna te hetetokter og mageknip 
+                    <button class="margin-trigger" aria-label="Reference Note">[*]
+                        <span class="margin-popup">Skulda ligg mellom heimelaga Shepherdspai med kylling og store mengda med smågødt.</span>
+                    </button> 
+                før sjølve flyet vart smitta og turbulens utta like fulgte ned mot rullebanen.</p>
+				
+				<!-- SMS WIDGET: SMS frå Goffa -->
+            <aside class="sms-widget">
+                <div class="sms-header">
+                    <span class="sms-sender">Goffa</span>
+                    <span class="sms-time">10:12</span>
+                </div>
+                <div class="sms-bubble">
+                    <p>Perfekt landing, ha ein framifrå dag 😊</p>
+                </div>
+            </aside>
+            </div>
+			
+
+<!-- TIMELINE WIDGET: Reiserute -->
+            <aside class="timeline-widget">
+                <h4>Reiserute</h4>
+                <ul class="itinerary-timeline">
+                    <li>
+                        <span class="icon">🏠</span>
+                        <div class="timeline-content">
+                            <span class="time">04:30</span>
+                            <span class="location">Oslo</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">✈️</span>
+                        <div class="timeline-content">
+                            <span class="time">08:00</span>
+                            <span class="location">Gardermoen</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">🛬</span>
+                        <div class="timeline-content">
+                            <span class="time">10:05</span>
+                            <span class="location">Schiphol</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">🚆</span>
+                        <div class="timeline-content">
+                            <span class="time">11:30</span>
+                            <span class="location">Tog mot Groningen</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">📍</span>
+                        <div class="timeline-content">
+                            <span class="time">13:15</span>
+                            <span class="location">Ankomst Zwolle</span>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+		</div>
+		<div>
+			<p>Nederland har, i kontrast te andre kongerikju me ikkji ska nemne ved namn, eit velfungerande og presist togsystem! Så etter dei to skrantande kuffertane mine va plukka opp ved <span class="airport-sign">♿ Rolstoel  halling</span> spratt e på eit presist NS tog<button class="margin-trigger" aria-label="Reference Note">*
+    <span class="margin-popup">Nederlandse Spoorwegen, heldigvis.</span>
+</button> mot <span class="dutch-train-display"> Groningen</span>.</p>
+			<p>Då e tidlegare har vørte jaga ut or fyssteklassevøgna tå <span class="ns-logo-badge">NS</span>-ansatte, satt e me no gødt te rette i arbeiderklassevagga frå start unde den knusande tyngden tå mitt liv i bagasjeførm. Ein rau koffert, ein haltande grå e har støle frå mor og ein ny ryggbag.</p>
+		</div>
+	</article>
+	
+
+  
+    <!-- POST 1: Rengværsdag -->
+    <article class="post-box journal-post" id="dag1">
+        <header class="post-meta">
+            <time datetime="2026-08-19" class="post-date">Aug 20, 2026</time>
+            <span class="post-tag">Dagslogg</span>
+        </header>
+        <h2>Skødde og regn - e e i Drammen?</h2>
+		
         
-        <figure class="media-block">
-            <img src="./assets/gifs/process.gif" alt="Animated GIF showing the CNC milling process in real-time">
-            <figcaption>Testing the feed rate on the new CNC machine.</figcaption>
+<!-- GIF og bilete -->
+        <figure class="media-block media-collage">
+            <img src="./assets/gifs/regn01.gif" class="main-gif" alt="Den 20. august regna det 11.6mm i Zwolle under ein lang tolevælsdag">
+            
+            <img src="./assets/images/.png" class="side-pic" alt="E venta med tekøppen">
+            
+            <figcaption class="caption">Den 20. august regna det 11.6mm i Zwolle under ein lang tolevælsdag</figcaption>
         </figure>
+		
+		<p>"Hadde e vøri like gødt tå i Drammen?" E eit spørsmål ein må stille se etter store steg ut or komfortsona. Når det regna som værst og alle rundt ein prata eit anna mål, e det løv å lure, tenkji e. Men!</p>
+
     </article>
 
-    <!-- POST 3: Sept 12 Update -->
+    <!-- POST 2: Puter -->
     <article class="post-box journal-post" id="post-2026-09-12">
         <header class="post-meta">
             <time datetime="2026-09-12" class="post-date">Sept 12, 2026</time>
@@ -104,6 +197,11 @@
             <img src="assets/gifs/rotation.gif" alt="360 degree 3D rotation view of the timber model">
             <figcaption>Rapid turntable test (GIF, loop)</figcaption>
         </figure>
+		
+	        <!-- Converted side-note to an aside -->
+            <aside class="text-block side-note">
+                <p>💡 <em>Observation:</em> The local approach to modular joinery differs quite a bit from what I'm used to back home.</p>
+            </aside>
     </article>
 
 </body>
