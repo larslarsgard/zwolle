@@ -4,7 +4,7 @@
 :root {
     --bg-desk: #e8e4db;          /* The "table" behind the notebook */
     --bg-paper: #ffffff;         /* The page color */
-    --dot-grid: #e5e0d5;         /* Color of the notebook dots */
+    --dot-grid: #f5f3ef;         /* Color of the notebook dots */
     --text-main: #333333;
     --ink-blue: #2b5c8c;         /* Pen color for links/notes */
     --ink-red: #b33927;          /* Pen color for highlights */
@@ -12,7 +12,7 @@
     --note-pink: #ffd1dc;
     --border-soft: #e3dec9;
 }
-
+@import url('[https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap](https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap)');
 /* ==========================================================================
    2. GLOBAL & TYPOGRAPHY
    ========================================================================== */
@@ -52,7 +52,7 @@ h1, h2, h3, h4 {
         -1px 0 0 rgba(0,0,0,0.02) inset; /* Subtle page edge */
     
     /* Bullet Journal Dot Grid Effect */
-    background-image: radial-gradient(var(--dot-grid) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(var(--dot-grid) 1.5px, transparent 2px);
     background-size: 24px 24px;
 }
 
@@ -60,6 +60,13 @@ header.journal-header, header.post-meta {
     margin-bottom: 2.5rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--text-main);
+}
+
+/* Add this new rule just for the journal header */
+header.journal-header {
+    display: flex;
+    justify-content: space-between; /* Pushes the h1 left and the date right */
+    align-items: baseline; /* Aligns the bottom of the small text with the big text */
 }
 
 .post-meta {
@@ -287,4 +294,382 @@ button.margin-trigger:focus .margin-popup {
 figure.gif-wrapper {
     margin: 2rem 0;
     text-align: center;
+}
+
+/* ==========================================================================
+   8. SPECIFIC LAYOUT OVERRIDES 
+   ========================================================================== */
+
+/* Makes the image block tall enough to sit beside both the text AND the nav */
+.tall-media {
+    grid-column: 8 / 13;   /* Forces it to the right 5 columns */
+    grid-row: 1 / span 2;  /* Stretches it down across two rows */
+}
+
+/* Modifies the nav to fit perfectly inside the left column of the grid */
+.inline-nav {
+    grid-column: 1 / 8;    /* Forces it to the left 7 columns */
+    background: transparent; /* Lets the dot-grid show through */
+    padding: 1rem 0 0 0;   /* Removes the heavy padding so it aligns with text */
+    margin: 0;
+}
+
+/* Adjusts the top border of the inline nav so it looks like a clean separator */
+.inline-nav h3 {
+    border-top: 1px dashed var(--border-soft);
+    padding-top: 1rem;
+    margin-top: 0;
+}
+
+/* ==========================================================================
+   9. TIMELINE WIDGET (Travel Itinerary)
+   ========================================================================== */
+aside.timeline-widget {
+    grid-column: span 4; /* Takes up 4 columns in the grid */
+    background: rgba(253, 251, 247, 0.85); /* Slightly off-white paper feel */
+    border: 1px solid var(--border-soft);
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+aside.timeline-widget h4 {
+    margin-top: 0;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px dashed var(--border-soft);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+/* The list container */
+ul.itinerary-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* The vertical connecting line */
+ul.itinerary-timeline::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 15px; /* Stops before the very end */
+    left: 12px;   /* Centers the line behind the emojis */
+    width: 2px;
+    background: var(--ink-blue);
+    opacity: 0.2; /* Makes it look like a faded pen line */
+}
+
+/* Individual timeline items */
+ul.itinerary-timeline li {
+    position: relative;
+    padding-left: 2.8rem;
+    margin-bottom: 1.5rem;
+    min-height: 28px; /* Ensures short items still clear the emoji */
+}
+
+ul.itinerary-timeline li:last-child {
+    margin-bottom: 0;
+}
+
+/* The Emojis */
+ul.itinerary-timeline .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fcfbf8; /* Matches the widget background to hide the line behind it */
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+/* Text styling */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-content .time {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: var(--ink-red); /* Uses your red pen color for the time */
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.timeline-content .location {
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   10. SMS MESSAGE WIDGET
+   ========================================================================== */
+aside.sms-widget {
+    grid-column: 1 / span 4; /* Locks it to the left side and keeps it narrow */
+    margin: 1.5rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Phones use sans-serif */
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.sms-header {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    font-family: 'Courier New', Courier, monospace; /* Keeps the notebook vibe */
+}
+
+.sms-sender {
+    font-weight: bold;
+    color: var(--ink-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sms-time {
+    color: #888;
+}
+
+.sms-bubble {
+    background-color: #f4f2ec; /* Slightly darker than the page */
+    border: 1px solid var(--border-soft);
+    padding: 0.8rem 1.2rem;
+    
+    /* This border-radius creates the "incoming message" speech bubble shape */
+    border-radius: 16px 16px 16px 4px; 
+    
+    font-size: 0.9rem;
+    color: var(--text-main);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    position: relative;
+}
+
+.sms-bubble p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   11. INLINE AIRPORT SIGN (Schiphol Style)
+   ========================================================================== */
+.airport-sign {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: #ffcc00; /* Classic Schiphol Yellow */
+    color: #111111; /* Sharp black text */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.75em; /* Keeps it smaller than the paragraph text */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    margin: 0 0.2em;
+    vertical-align: text-bottom; /* Prevents it from breaking the paragraph's line spacing */
+    line-height: 1.1;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15); /* Tiny shadow to make it look like a physical sign */
+}
+
+/* ==========================================================================
+   12. TRAIN DOT-MATRIX
+   ========================================================================== */
+.train-display {
+    color: #ff9500; /* Bright LED orange */
+    font-family: 'Courier New', Courier, monospace; /* Monospace mimics the grid */
+    font-weight: bold;
+    font-size: 0.80em;
+    letter-spacing: 0.1em;
+    padding: 0.15em 0.35em;
+    margin: 0 0.1em;
+    border-radius: 2px;
+    background-color: #1e1e1e; /* Dark gray/black screen background */
+    border: 1px solid #000000; /* Dark bezel around the "screen" */
+	
+    /* The magic trick: Multiple text-shadows create an LED glowing effect */
+    text-shadow: 
+        0 0 2px rgba(255, 149, 0, 0.8), 
+        0 0 4px rgba(255, 149, 0, 0.4);
+    
+    vertical-align: baseline; /* Keeps it neatly in the text line */
+}
+
+/* ==========================================================================
+   12. DUTCH TRAIN DOT-MATRIX
+   ========================================================================== */
+.dutch-train-display {
+    color: #003082; /* Official NS Blue */
+    font-family: font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.90em;
+    letter-spacing: 0.1em;
+    padding: 0.15em 0.35em;
+    margin: 0 0.1em;
+    border-radius: 2px;
+    background-color: #f5f6f8; /* Light gray/white station board color */
+    
+    /* The magic trick: Blue text-shadows create an LCD pixel-bleed/ghosting effect */
+    text-shadow: 
+        0 0 1px rgba(0, 48, 130, 0.6), 
+    
+    vertical-align: baseline; /* Keeps it neatly in the text line */
+}
+
+/* ==========================================================================
+   13. DIGITAL ALARM CLOCK
+   ========================================================================== */
+.digital-clock {
+    background-color: #0a0a0a; /* Very dark, almost black screen */
+    color: #ff1e1e; /* Bright glowing LED red */
+    font-family: 'Courier New', Courier, monospace; /* Monospace keeps the numbers aligned */
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    padding: 0.15em 0.4em;
+    margin: 0 0.1em;
+    border-radius: 4px; /* Slightly rounded edges of the screen */
+    
+    /* Creates a dark plastic bezel around the screen */
+    border: 2px solid #2a2a2a; 
+    
+    /* Makes the screen look slightly sunken/inset into the plastic */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    
+    /* Adds the LED light bleed/glow effect */
+    text-shadow: 
+        0 0 3px rgba(255, 30, 30, 0.8),
+        0 0 6px rgba(255, 30, 30, 0.4);
+        
+    vertical-align: baseline;
+}
+
+/* ==========================================================================
+   14. DUTCH RAILWAY (NS) STATION SIGN
+   ========================================================================== */
+/* The tiny yellow NS badge */
+.ns-logo-badge {
+    background-color: #ffc917; /* Official NS Yellow */
+    color: #003082; /* NS Blue */
+    font-size: 0.85em;
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+    font-weight: 900;
+    letter-spacing: -0.05em; /* Pulls the N and S tight together like the real logo */
+}
+
+
+/* ==========================================================================
+   15. MEDIA COLLAGE (50/50 Equal Size)
+   ========================================================================== */
+.media-collage {
+    display: grid;
+    /* Creates 2 exactly equal columns (50% and 50%) */
+    grid-template-columns: 2fr 1fr; /* GIF is 75% wide, Picture is 25% wide */
+    gap: 1rem; /* Space between the images */
+}
+
+.media-collage .main-gif,
+.media-collage .side-pic {
+    width: 100%;
+    /* You can adjust this height if you want them taller or shorter */
+    height: 250px; 
+    /* object-fit: cover ensures the images fill their boxes without squishing */
+    object-fit: cover; 
+    border-radius: 2px;
+}
+
+.media-collage figcaption {
+    grid-column: 1 / -1; /* Spans the caption across both images */
+    margin-top: 0.5rem;
+}
+
+.media-collage .main-gif {
+    grid-column: 1 / 2;    /* Stays in the first column */
+    grid-row: 1 / 3;       /* Stretches across both the top and bottom rows */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* Prevents the GIF from warping */
+}
+
+.media-collage .side-pic {
+    grid-column: 2 / 3;    /* Pushed to the second column */
+    grid-row: 2 / 3;       /* Placed ONLY in the bottom row (leaving top empty) */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-collage figcaption {
+    grid-column: 1 / -1;   /* Forces the caption to span across all columns */
+    grid-row: 3 / 4;       /* Puts it in the final row at the very bottom */
+    margin-top: 0;         /* Removes the default margin since we use grid gap */
+}
+
+
+/* ==========================================================================
+   16. SHIFTING WORD ANIMATION (Morphing Anagrams)
+   ========================================================================== */
+.word-cycle {
+    color: var(--ink-red);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-bottom: 1px dashed var(--ink-red);
+}
+
+.word-cycle::after {
+    content: "Gardermoen";
+    /* inline-block is required for blur and opacity animations to work properly on text */
+    display: inline-block; 
+    
+    /* 12 seconds total for 6 words (2 seconds per word) */
+    animation: morphWords 12s infinite ease-in-out; 
+}
+
+/* The timeline: text stays solid, blurs/fades out, swaps while invisible, then blurs/fades in */
+@keyframes morphWords {
+    /* 1. Gardermoen */
+    0%, 12%  { content: "Gardermoen"; opacity: 1; filter: blur(0); }
+    14%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+    
+    /* 2. Dogremaren */
+    15%      { content: "Dogremaren"; opacity: 0; filter: blur(3px); }
+    17%, 29% { content: "Dogremaren"; opacity: 1; filter: blur(0); }
+    31%      { content: "Dogremaren"; opacity: 0; filter: blur(3px); }
+
+    /* 3. Gardermoen */
+    32%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+    34%, 46% { content: "Gardermoen"; opacity: 1; filter: blur(0); }
+    48%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+
+    /* 4. Agdermoren */
+    49%      { content: "Agdermoren"; opacity: 0; filter: blur(3px); }
+    51%, 63% { content: "Agdermoren"; opacity: 1; filter: blur(0); }
+    65%      { content: "Agdermoren"; opacity: 0; filter: blur(3px); }
+
+    /* 5. Gardermoen */
+    66%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+    68%, 80% { content: "Gardermoen"; opacity: 1; filter: blur(0); }
+    82%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+
+    /* 6. Modergaren */
+    83%      { content: "EndreGarmo"; opacity: 0; filter: blur(3px); }
+    85%, 96% { content: "EndreGarmo"; opacity: 1; filter: blur(0); }
+    98%      { content: "EndreGarmo"; opacity: 0; filter: blur(3px); }
+
+    /* Loop back cleanly to Gardermoen */
+    99%      { content: "Gardermoen"; opacity: 0; filter: blur(3px); }
+    100%     { content: "Gardermoen"; opacity: 1; filter: blur(0); }
 }
