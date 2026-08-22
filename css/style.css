@@ -1019,3 +1019,275 @@ aside.sms-widget {
     91% { transform: translate(1px, -2px) rotate(5deg); }
     94% { transform: translate(-1px, 1px) rotate(-2deg); }
 }
+
+
+/* ==========================================================================
+   24. 2x2 RESPONSIVE PHOTO GRID (2x2 Desktop -> 1x4 Mobile)
+   ========================================================================== */
+.photo-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.photo-grid-2x2 figure {
+    margin: 0;
+}
+
+.photo-grid-2x2 img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Mobile Adaptation: Stacks 1x4 on small screens */
+@media (max-width: 550px) {
+    .photo-grid-2x2 {
+        grid-template-columns: 1fr; /* 1x4 Vertical Stack */
+    }
+}
+
+/* ==========================================================================
+   25. CLASSIC IPOD PLAYLIST WIDGET
+   ========================================================================== */
+.ipod-widget {
+    max-width: 310px;
+    margin: 2rem auto;
+    padding: 10px;
+    background: linear-gradient(145deg, #e6e6e6, #cccccc); /* Metallic Silver Frame */
+    border: 1px solid #b5b5b5;
+    border-radius: 12px;
+    box-shadow: 
+        0 6px 14px rgba(0,0,0,0.12),
+        inset 0 1px 1px rgba(255,255,255,0.8);
+}
+
+.ipod-screen {
+    background-color: #ffffff;
+    border: 2px solid #222222;
+    border-radius: 4px;
+    font-family: 'Helvetica Neue', Geneva, Arial, sans-serif;
+    font-size: 0.82rem;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Header Bar */
+.ipod-topbar {
+    background: linear-gradient(to bottom, #d8d8d8, #a2a2a2);
+    color: #000000;
+    font-weight: bold;
+    padding: 3px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #666666;
+    font-size: 0.75rem;
+}
+
+/* Song List */
+.ipod-playlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ipod-playlist li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: 1px solid #eaeaea;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Iconic Glossy Blue Active Selection Bar */
+.ipod-playlist li.active {
+    background: linear-gradient(to bottom, #3399ff, #0055cc);
+    color: #ffffff;
+}
+
+.ipod-playlist li .song-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 6px;
+}
+
+.ipod-playlist li .arrow {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   24. 3-PHOTO WIGGLY STRIP (Fixed Container & Class Reset)
+   ========================================================================== */
+.photo-strip-3 {
+    grid-column: 1 / -1; /* Spans across your 12-column content-grid */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Strictly 3 columns */
+    gap: 0.6rem;
+    max-width: 360px;
+    margin: 1.5rem auto;
+    width: 100%;
+}
+
+/* Resets any global .media-block rules that interfere */
+.photo-strip-3 figure.media-block {
+    grid-column: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: transform 0.25s ease-in-out;
+}
+
+/* 🤪 Wiggly organic angles */
+.photo-strip-3 figure:nth-child(1) { transform: rotate(-3deg) translateY(2px); }
+.photo-strip-3 figure:nth-child(2) { transform: rotate(2.5deg) translateY(-3px); }
+.photo-strip-3 figure:nth-child(3) { transform: rotate(-2deg) translateY(4px); }
+
+/* 🔍 Hover effect */
+.photo-strip-3 figure:hover {
+    transform: rotate(0deg) scale(1.08) translateY(-2px);
+    z-index: 5;
+}
+
+.photo-strip-3 img {
+    width: 100% !important;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    display: block;
+}
+
+.photo-strip-3 figcaption {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin-top: 0.3rem;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   26. VERTICAL PHOTO STACK & SIDE-BY-SIDE SECTIONS
+   ========================================================================== */
+
+/* Stack photos vertically in the right column */
+.photo-stack-vertical {
+    grid-column: span 5; /* Occupies the right side of content-grid */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.photo-stack-vertical .media-block {
+    margin: 0;
+    width: 100%;
+}
+
+.photo-stack-vertical img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Vertical alignment helper for the iPod + Text row */
+.content-grid.align-center {
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+/* Ensures the iPod widget fits inside its left grid column */
+.content-grid .ipod-widget {
+    grid-column: span 5;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Stacks neatly into single columns on small mobile screens */
+@media (max-width: 650px) {
+    .photo-stack-vertical,
+    .content-grid .ipod-widget {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ==========================================================================
+   26. TWO-COLUMN LAYOUT WITH MOBILE RE-ORDERING
+   ========================================================================== */
+
+/* PC Defaults */
+.left-column {
+    grid-column: span 7;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.left-column .ipod-widget {
+    max-width: 100%;
+    margin: 0.5rem 0;
+}
+
+.photo-stack-vertical {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.photo-stack-vertical .media-block {
+    margin: 0;
+    width: 100%;
+}
+
+.photo-stack-vertical img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Mobile Sequence Re-ordering (<= 650px) */
+@media (max-width: 650px) {
+    .post3-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    /* Dissolves wrapper div on mobile so direct children can be ordered freely */
+    .post3-grid .left-column {
+        display: contents;
+    }
+
+    /* Mobile Order: Top Text -> 3 Images -> Bottom Text -> Music Box */
+    .post3-grid .text-top { 
+        order: 1; 
+    }
+    
+    .post3-grid .photo-stack-vertical { 
+        order: 2; 
+        width: 100%; 
+    }
+    
+    .post3-grid .text-bottom { 
+        order: 3; 
+    }
+    
+    .post3-grid .ipod-widget { 
+        order: 4; 
+        width: 100%; 
+        margin: 1rem 0; 
+    }
+}
