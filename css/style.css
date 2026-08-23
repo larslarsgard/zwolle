@@ -95,6 +95,18 @@ header.journal-header {
 /* Let media span fully if needed */
 .feature-img { grid-column: span 12; }
 
+.media-block {
+    display: flex;
+    flex-direction: column; /* Tvingar figcaption til å liggje UNDER biletet */
+}
+
+.media-block figcaption {
+    display: block;
+    width: 100%;
+    margin-top: 0.4rem;
+    text-align: center; /* Eller left dersom du vil ha det venstrejustert */
+}
+
 /* Images look like taped/pasted photos */
 figure img {
     width: 100%;
@@ -1290,4 +1302,10 @@ aside.sms-widget {
         width: 100%; 
         margin: 1rem 0; 
     }
+}
+
+/* Fullbreidd tekstblokk øverst i innlegget */
+.text-block.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 1.5rem;
 }
