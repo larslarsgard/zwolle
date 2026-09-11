@@ -1525,3 +1525,60 @@ aside.sms-widget {
         aspect-ratio: 4 / 3;
     }
 }
+
+
+/* ==========================================================================
+   32. BOBBING UPDATED TIMESTAMP
+   ========================================================================== */
+.date.updated-bob {
+    display: inline-block; /* Required for transform / bobbing to take effect */
+    padding: 2px 7px;
+    border: 1px dashed rgba(192, 57, 43, 0.45); /* Soft, dashed ink-red outline */
+    border-radius: 3px;
+    background-color: rgba(192, 57, 43, 0.04); /* Faint reddish wash */
+    color: var(--ink-red, #b33939);
+    animation: subtleBob 3s ease-in-out infinite;
+    cursor: default;
+}
+
+/* Gentle floating motion */
+@keyframes subtleBob {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Pauses and lifts slightly when hovered */
+.date.updated-bob:hover {
+    animation-play-state: paused;
+    border-color: var(--ink-red, #b33939);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   31. FULL-WIDTH CLEAN VIDEO
+   ========================================================================== */
+.media-block.video-full {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 1rem 0 2rem;
+}
+
+.media-block.video-full video {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    background: #000000;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    display: block;
+}
+
+.media-block.video-full .caption {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
